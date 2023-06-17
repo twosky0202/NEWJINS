@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             authMenuItem!!.title = "${MyApplication.email}님"
         }
         else{
-            authMenuItem!!.title = "인증"
+            authMenuItem!!.title = "로그인"
         }
         return super.onCreateOptionsMenu(menu)
     }
@@ -41,19 +41,20 @@ class MainActivity : AppCompatActivity() {
                 authMenuItem!!.title = "${MyApplication.email}님"
             }
             else {
-                authMenuItem!!.title = "인증"
+                authMenuItem!!.title = "로그인"
             }
         }
 
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId === R.id.menu_auth){
+        if (item.itemId == R.id.menu_auth) {
             val intent = Intent(this, AuthActivity::class.java)
-            if(authMenuItem!!.title!!.equals("인증")){
+
+            if (authMenuItem!!.title!!.equals("로그인")) {
                 intent.putExtra("data", "logout")
             }
-            else{ // 이메일, 구글계정 표시가 되고 있다.
+            else { // 이메일, 구글계정 표시가 되고 있다.
                 intent.putExtra("data", "login")
             }
             startActivity(intent)
