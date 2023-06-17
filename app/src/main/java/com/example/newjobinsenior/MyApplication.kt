@@ -30,16 +30,16 @@ class MyApplication: MultiDexApplication() {
             } ?: false
         }
 
-//        var networkService : NetworkService
-//        val retrofit: Retrofit
-//            get() = Retrofit.Builder()
-//                .baseUrl("http://apis.data.go.kr/B553748/CertImgListService/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build()
-//        init {
-//            networkService = retrofit.create(NetworkService::class.java) // 초기화
-//
-//        }
+        var networkService : NetworkService
+        val retrofit: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl("http://openapi.seoul.go.kr:8088/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        init {
+            networkService = retrofit.create(NetworkService::class.java) // 초기화
+
+        }
     }
 
     override fun onCreate() {

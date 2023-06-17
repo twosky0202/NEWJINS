@@ -9,6 +9,7 @@ import com.example.newjobinsenior.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    lateinit var retrofitFragment: RetrofitFragment
 
     var authMenuItem : MenuItem? = null
 
@@ -16,6 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        retrofitFragment = RetrofitFragment()
+
+        binding.eduInfo.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.activity_content, retrofitFragment)
+                .commit()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
