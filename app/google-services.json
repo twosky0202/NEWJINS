@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "893398952116",
+    "project_id": "newjins-46297",
+    "storage_bucket": "newjins-46297.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893398952116:android:4906f494a6f04d36030fe1",
+        "android_client_info": {
+          "package_name": "com.example.newjobinsenior"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893398952116-lqc2cnielhjai9mcablfp9slfgc1u8gi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.newjobinsenior",
+            "certificate_hash": "02e327632ecab4e3bb899a631110a287c375ac2c"
+          }
+        },
+        {
+          "client_id": "893398952116-njnu0f6k0q7s22n163g1f9rd1lke3lbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ0up2fXoRUb50TgD5Pm8tjxUr3bGP3fc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893398952116-njnu0f6k0q7s22n163g1f9rd1lke3lbm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
