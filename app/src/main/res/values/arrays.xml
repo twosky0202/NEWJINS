@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="my_color">
+        <item>빨강</item>
+        <item>파랑</item>
+        <item>초록</item>
+        <item>노랑</item>
+        <item>검정</item>
+        <item>하양</item>
+    </string-array>
+    <string-array name="my_color_values">
+        <item>#FF0000</item>
+        <item>#0000FF</item>
+        <item>#00FF00</item>
+        <item>#FFFF00</item>
+        <item>#000000</item>
+        <item>#FFFFFF</item>
+    </string-array>
+</resources>
