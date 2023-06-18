@@ -84,6 +84,36 @@
         </RelativeLayout>
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- 메뉴 아이템 1 -->
+        <Button
+            android:id="@+id/menu_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="저장하기"
+            android:textSize="16sp" />
+
+        <!-- 메뉴 아이템 2 -->
+        <Button
+            android:id="@+id/menu_read"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="불러오기"
+            android:textSize="16sp" />
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="300dp"
@@ -94,7 +124,7 @@
         android:scaleType="fitXY" />
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.2dp"
+        android:layout_height="1dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="3dp"
         android:background="#40000000" />

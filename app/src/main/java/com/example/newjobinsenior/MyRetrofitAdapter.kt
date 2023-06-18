@@ -3,19 +3,23 @@ package com.example.newjobinsenior
 import CurrentSourceExtractor
 import android.app.Activity
 import android.content.Context
-import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newjobinsenior.databinding.ItemRetrofitBinding
+import java.io.BufferedReader
+import java.io.File
+import java.io.OutputStreamWriter
 
 class MyRetrofitViewHolder(val binding: ItemRetrofitBinding): RecyclerView.ViewHolder(binding.root)
 
 class MyRetrofitAdapter(val context: Context, val datas: MutableList<ItemRetrofitModel>?): RecyclerView.Adapter<MyRetrofitViewHolder>(){
+//    val selectedItems: MutableSet<ItemRetrofitModel> = mutableSetOf()
 
     override fun getItemCount(): Int{
         return datas?.size ?: 0
@@ -61,6 +65,24 @@ class MyRetrofitAdapter(val context: Context, val datas: MutableList<ItemRetrofi
         }
         currentSourceExtractor.extractCurrentSource()
 
+        binding.menuSave.setOnClickListener {
+            val file: File = File(context.filesDir, "edu.txt")
+            val writeStream: OutputStreamWriter = file.writer()
+            writeStream.write("hello android!!\n")
+            val data = model.toString() // 해당 모델을 문자열로 변환하여 전달합니다.
+            writeStream.write(data + "\n")
+            writeStream.flush() // 직접적으로 파일에 작성
+            writeStream.close()
+            Toast.makeText(context, "데이터가 저장되었습니다.", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.menuRead.setOnClickListener {
+            val file: File = File(context.filesDir, "edu.txt")
+            val readStream: BufferedReader = file.reader().buffered()
+            readStream.forEachLine {
+                Log.d("mobileApp", "$it")
+            }
+        }
     }
 
 }

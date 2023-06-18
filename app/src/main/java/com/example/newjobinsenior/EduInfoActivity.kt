@@ -10,6 +10,8 @@ import retrofit2.Response
 
 class EduInfoActivity : BaseActivity() {
     lateinit var binding: ActivityEduInfoBinding
+    var datas: MutableList<String>? = null
+    lateinit var adapter: MyRetrofitAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,8 @@ class EduInfoActivity : BaseActivity() {
                     if (responseBody != null) {
                         responseBody.row?.sortByDescending { it.IDX }
                         binding.retrofitRecyclerView.layoutManager = LinearLayoutManager(this@EduInfoActivity)
-                        binding.retrofitRecyclerView.adapter = MyRetrofitAdapter(this@EduInfoActivity, responseBody.row)
+                        adapter = MyRetrofitAdapter(this@EduInfoActivity, responseBody.row)
+                        binding.retrofitRecyclerView.adapter = adapter
                     } else {
                         Log.d("mobileApp", "response body is null")
                     }
@@ -52,9 +55,8 @@ class EduInfoActivity : BaseActivity() {
 
         mutableList = mutableListOf<ItemRetrofitModel>()
         binding.retrofitRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.retrofitRecyclerView.adapter = MyRetrofitAdapter(this, mutableList)
+        adapter = MyRetrofitAdapter(this, mutableList)
+        binding.retrofitRecyclerView.adapter = adapter
 
     }
-
-
 }
