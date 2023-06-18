@@ -1,6 +1,7 @@
 package com.example.newjobinsenior
 
 import android.os.Bundle
+import android.text.InputType
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,7 +17,6 @@ class MySettingFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.settings, rootKey)
 
         val idPreference: EditTextPreference? = findPreference("id")
-//        idPreference?.summaryProvider = EditTextPreference.SimpleSummaryProvider.getInstance()
         idPreference?.summaryProvider = Preference.SummaryProvider<EditTextPreference> {
                 preference ->
             val text:String? = preference.text
@@ -24,7 +24,23 @@ class MySettingFragment : PreferenceFragmentCompat() {
                 "ID 설정이 되지 않았습니다."
             }
             else{
-                "설정된 ID는 $text 입니다."
+                "$text"
+            }
+
+        }
+
+        val agePreference: EditTextPreference? = findPreference("age")
+        agePreference?.setOnBindEditTextListener { editText ->
+            editText.inputType = InputType.TYPE_CLASS_NUMBER
+        }
+        agePreference?.summaryProvider = Preference.SummaryProvider<EditTextPreference> {
+                preference ->
+            val text:String? = preference.text
+            if(TextUtils.isEmpty(text)){
+                "나이 설정이 되지 않았습니다."
+            }
+            else{
+                "$text"
             }
 
         }
