@@ -35,14 +35,14 @@
                 android:text="교육명"
                 android:textStyle="bold"
                 android:textColor="#212121"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/item_training_period"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_name"
                 android:layout_marginTop="3dp"
-                android:text="교육기간"
+                android:text="교육 기간"
                 android:textColor="#727272"
                 android:textSize="14sp" />
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_training_period"
                 android:layout_marginTop="3dp"
-                android:text="신청기간"
+                android:text="신청 기간"
                 android:textColor="#727272"
                 android:textSize="14sp" />
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_register_period"
                 android:layout_marginTop="3dp"
-                android:text="수강정원"
+                android:text="수강 정원"
                 android:textColor="#727272"
                 android:textSize="14sp" />
             <TextView
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_capacity"
                 android:layout_marginTop="3dp"
-                android:text="교육비용"
+                android:text="교육 비용"
                 android:textColor="#727272"
                 android:textSize="14sp" />
             <TextView
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_cost"
                 android:layout_marginTop="3dp"
-                android:text="상세보기"
+                android:text="상세 보기"
                 android:textColor="#727272"
                 android:textSize="14sp" />
         </RelativeLayout>
@@ -86,10 +86,11 @@
 
     <ImageView
         android:id="@+id/item_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
         android:scaleType="fitXY" />
     <View
         android:layout_width="match_parent"
