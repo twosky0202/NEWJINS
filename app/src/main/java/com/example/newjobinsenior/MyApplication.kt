@@ -16,8 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 // 첫 번째 액티비티(MainActivity)가 표기되지 전에 전역 상태를 초기화하는 데 사용
 class MyApplication: MultiDexApplication() {
     companion object{
-//        lateinit var db : FirebaseFirestore
-//        lateinit var storage : FirebaseStorage
+        lateinit var db : FirebaseFirestore
+        lateinit var storage : FirebaseStorage
 
         lateinit var auth : FirebaseAuth
         var email: String? = null
@@ -46,7 +46,7 @@ class MyApplication: MultiDexApplication() {
         super.onCreate()
         auth = Firebase.auth
 
-//        db = FirebaseFirestore.getInstance()
-//        storage = Firebase.storage
+        db = FirebaseFirestore.getInstance()
+        storage = Firebase.storage
     }
 }
