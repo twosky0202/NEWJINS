@@ -1,16 +1,14 @@
 package com.example.newjobinsenior
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newjobinsenior.databinding.ActivityEduInfoBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EduInfoActivity : AppCompatActivity() {
+class EduInfoActivity : BaseActivity() {
     lateinit var binding: ActivityEduInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
