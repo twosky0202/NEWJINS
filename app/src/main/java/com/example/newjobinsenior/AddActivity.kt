@@ -3,7 +3,6 @@ package com.example.newjobinsenior
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -12,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.newjobinsenior.databinding.ActivityAddBinding
+import com.google.firebase.storage.StorageReference
 import java.io.File
 
 import java.text.SimpleDateFormat
@@ -53,7 +53,7 @@ class AddActivity : BaseActivity() {
         }
 
         binding.btnSave.setOnClickListener {
-            if(binding.addEditView.text.isNotEmpty() && binding.addImageView.drawable !== null){
+            if(binding.addImageView.drawable !== null && binding.addEditView.text.isNotEmpty()){
                 // firestore 저장 후 document id 값으로 업로드 파일 이름 지정
                 saveStore()
             } else{
@@ -62,12 +62,12 @@ class AddActivity : BaseActivity() {
             finish()
         }
     }
-    fun dateToString(date:Date):String{
+    private fun dateToString(date:Date):String{
         val format = SimpleDateFormat("yyyy-MM-dd hh:mm")
         return format.format(date)
 
     }
-    fun saveStore(){
+    private fun saveStore(){
         val data = mapOf(
             "email" to MyApplication.email,
             "content" to binding.addEditView.text.toString(),
@@ -83,20 +83,22 @@ class AddActivity : BaseActivity() {
                 Log.d("mobileApp", "data firestore save error - ${it.toString()}")
             }
     }
-    fun uploadImage(docId:String){
+    private fun uploadImage(docId: String){
+        //add............................
         val storage = MyApplication.storage
-        val storageRef = storage.reference
-        val imageRef = storageRef.child("images/${docId}.jpg") // 스토리지에 접근. 저장 경로 설정
+        val storageRef : StorageReference = storage.reference
+        val imgRef : StorageReference= storageRef.child("images/${docId}.jpg")
+
         val file = Uri.fromFile(File(filePath))
         Log.d("mobileApp", file.toString())
-        imageRef.putFile(file) // file에 있는 내용을 이미지 레퍼런스를 이용해서 넣겠다.
+        imgRef.putFile(file)
             .addOnSuccessListener {
-                Toast.makeText(this, "save ok", Toast.LENGTH_SHORT).show()
-                Log.d("mobileApp", "imageRef.putFile(file) - addOnSuccessListener")
+                Toast.makeText(this, "save ok..", Toast.LENGTH_SHORT).show()
+                Log.d("mobileApp", "save ok..")
                 finish()
             }
-            .addOnFailureListener {
-                Log.d("mobileApp", "imageRef.putFile(file) - addOnFailureListener - ${it.toString()}")
+            .addOnFailureListener{
+                Log.d("mobileApp", "file save error", it)
             }
     }
 }

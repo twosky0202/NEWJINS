@@ -10,7 +10,6 @@ import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newjobinsenior.databinding.ActivityCommunityBinding
@@ -33,6 +32,8 @@ class CommunityActivity : BaseActivity() {
                 Toast.makeText(this, "인증을 진행해 주세요", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.boardRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.boardRecyclerView.adapter = MyBoardAdapter(this, mutableListOf())
     }
 
     override fun onStart() {
@@ -50,24 +51,27 @@ class CommunityActivity : BaseActivity() {
                         item.docId = document.id
                         itemList.add(item)
                     }
+                    Log.d("mobileApp", "$itemList")
                     binding.boardRecyclerView.layoutManager = LinearLayoutManager(this)
-                    binding.boardRecyclerView.adapter = MyBoardAdapter(this, itemList)
+                    val adapter = MyBoardAdapter(this, itemList) // 어댑터 인스턴스 생성
+                    binding.boardRecyclerView.adapter = adapter // 어댑터 연결
+                    adapter.notifyDataSetChanged() // 변경 사항 알림
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "서버 데이터 획득 실패", Toast.LENGTH_SHORT).show()
                 }
         }
     }
-    fun myCheckPermission() {
+    private fun myCheckPermission() {
         Log.d("mobileApp", "myCheckPermission")
 
-        val requestPermissionLauncher = registerForActivityResult(
+        val requestPermissionLauncher = this.registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted ->
             if (isGranted) {
-                Toast.makeText(this, "권한 승인", Toast.LENGTH_SHORT).show()
+                Log.d("mobileApp", "권한 승인")
             } else {
-                Toast.makeText(this, "권한 거부", Toast.LENGTH_SHORT).show()
+                Log.d("mobileApp", "권한 거부")
             }
         }
 

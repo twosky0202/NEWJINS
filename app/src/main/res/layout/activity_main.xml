@@ -45,15 +45,6 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/map"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="@color/main_color"
-            android:text="지도"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
     </LinearLayout>
 
 

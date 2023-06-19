@@ -36,9 +36,11 @@ class MyBoardAdapter(val context: Context, val itemList: MutableList<ItemBoardMo
         val imageRef = MyApplication.storage.reference.child("images/${data.docId}.jpg")
         imageRef.downloadUrl.addOnCompleteListener { task ->
             if(task.isSuccessful) {
+                val downloadUrl = task.result
+                Log.d("mobileApp", "다운로드 URL: $downloadUrl")
                 // 다운로드 이미지를 ImageView에 보여줌
                 GlideApp.with(context)
-                    .load(task.result)
+                    .load(downloadUrl)
                     .into(holder.binding.itemImageView)
             }
         }
